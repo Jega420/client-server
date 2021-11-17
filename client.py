@@ -15,7 +15,7 @@ def createUnique():
 def client_program():
     obj = {}
     host = '192.168.168.236'
-    port = 5000
+    port = 5002
     while True:
         client_socket = socket.socket()  
         client_socket.connect((host, port))  
@@ -27,7 +27,7 @@ def client_program():
         json_obj = json.loads(json_dump)
         print(json_obj)
         client_socket.send(bytes(str(obj).encode()))
-        print(client_socket.recv(1024))
+        print(client_socket.recv(1024).decode())
         client_socket.close()
 
 

@@ -5,7 +5,7 @@ import json
 
 def server_program():
     host = '192.168.168.236'
-    port = 5000
+    port = 5002
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((host, port)) 
@@ -21,7 +21,8 @@ def server_program():
         # print("from connected user: " + str(data))
         # conn.sendall(b'some')
         print(data)
-        conn.send(bytes(str(os.system(data['method'])).encode()))
+        print(os.system(data['method']))
+        conn.send(bytes(str(os.popen(data['method']).read()).encode()))
         conn.close()
 
 
